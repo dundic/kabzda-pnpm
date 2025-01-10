@@ -26,7 +26,7 @@ const Star = ({mark}: StarProps) => {
     // }
     return mark
            ? <span><b>star </b></span>
-           : <span>star </span>;
+           : <span>star </span>
 
 }
 
