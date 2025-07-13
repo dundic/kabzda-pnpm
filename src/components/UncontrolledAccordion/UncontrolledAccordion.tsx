@@ -4,31 +4,36 @@ type Props = {
     title: string
 }
 
+type AccordionTitleProps = {
+    title: string
+    callback: () => void
+}
+
 export const UncontrolledAccordion = (props: Props) => {
 
     const[expanded, setExpanded] = useState(false)
 
+    const newFunction = () => {
+        setExpanded(!expanded)
+    }
+
     return (
             <div>
-                <AccordionTitle title={props.title} />
-                <button onClick={()=>{setExpanded(!expanded)}}>toggle</button>
+                <AccordionTitle title={props.title} callback={newFunction}/>
+                {/*<button onClick={()=>{setExpanded(!expanded)}}>toggle</button>*/}
                 {expanded && <AccordionBody/>}
             </div>
     );
 };
 
-type AccordionTitleProps = {
-    title: string
-}
-
-const AccordionTitle = ({title}: AccordionTitleProps) => {
-    return <h3>---{title}---</h3>
+const AccordionTitle = ({title, callback}: AccordionTitleProps) => {
+    return <h3 style={{ cursor: 'pointer' }} onClick={callback}>---{title}---</h3>
 }
 
 const AccordionBody = () => {
     return <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
+        <li>Donny</li>
+        <li>Mark</li>
+        <li>Anna</li>
     </ul>
 }

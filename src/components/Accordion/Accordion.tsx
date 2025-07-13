@@ -1,12 +1,13 @@
 type AccordionProps = {
     title: string
     expanded: boolean
+    onChange: () => void
 }
 
 export const Accordion = (props:AccordionProps) => {
     return (
             <div>
-                <AccordionTitle title={props.title} />
+                <AccordionTitle title={props.title} onClick={props.onChange}/>
                 {props.expanded && <AccordionBody/>}
             </div>
     );
@@ -14,10 +15,13 @@ export const Accordion = (props:AccordionProps) => {
 
 type AccordionTitleProps = {
     title: string
+    onClick: () => void
+
 }
 
-const AccordionTitle = ({title}: AccordionTitleProps) => {
-    return <h3>---{title}---</h3>
+const AccordionTitle = ({title,onClick}: AccordionTitleProps) => {
+
+    return <h3 onClick={onClick}>---{title}---</h3>
 }
 
 const AccordionBody = () => {
